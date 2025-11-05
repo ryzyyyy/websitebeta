@@ -1,0 +1,1210 @@
+body {
+  transition: opacity 0.5s ease-in-out;
+  font-family: 'Poppins', sans-serif; /* Font lebih modern */
+  margin: 0;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%); /* Gradient subtle */
+  overflow-x: hidden; /* Hindari horizontal scroll */
+}
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+
+/* Global Utility Classes */
+.section-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: #222;
+  position: relative;
+  padding-bottom: 10px;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: #e60000;
+  border-radius: 2px;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a1a; /* Warna lebih gelap */
+  color: white;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.logo {
+  font-size: 28px; /* Ukuran lebih besar */
+  font-weight: 900; /* Lebih tebal */
+  letter-spacing: 1px;
+  color: #e60000; /* Warna logo Nike */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li {
+  position: relative; /* Penting untuk posisi sub-menu */
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  display: flex; /* Agar ikon panah sejajar dengan teks */
+  align-items: center;
+  gap: 5px; /* Jarak antara teks dan ikon */
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #e60000;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s ease;
+}
+.nav-links a:hover {
+  color: #e60000;
+  transform: translateY(-2px);
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+.search-box input {
+  padding: 8px 15px; /* Padding lebih besar */
+  border-radius: 20px; /* Lebih bulat */
+  border: 1px solid #444;
+  background: #333;
+  color: white;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 180px; /* Lebar default */
+}
+.search-box input::placeholder {
+  color: #bbb;
+}
+.search-box input:focus {
+  border-color: #e60000;
+  box-shadow: 0 0 8px rgba(230, 0, 0, 0.4);
+  width: 220px; /* Lebar saat fokus */
+}
+.search-box button {
+  background: #e60000;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin-left: -40px; /* Menumpuk dengan input */
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-box button:hover {
+  background: #b30000;
+}
+/* Icon for search button (optional, if you use font-awesome or similar) */
+/* .search-box button::before { content: '\f002'; font-family: 'Font Awesome 5 Free'; font-weight: 900; } */
+
+/* HERO SECTION (Video Lokal) */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  border: none;
+}
+
+.video-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  display: none; /* Tampilkan hanya jika video gagal */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Overlay transparan untuk kontras teks */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 600px;
+  padding: 0 20px;
+}
+
+.nike-icon {
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtitle {
+  font-size: 1.3em;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.video-btn-primary {
+  background: #e60000;
+  color: #fff;
+}
+
+.video-btn-primary:hover {
+  background: #cc0000;
+}
+
+.video-btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.video-btn-secondary:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Responsivitas untuk Hero */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2em;
+  }
+  .hero-subtitle {
+    font-size: 1.1em;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 0 10px;
+  }
+  .hero-title {
+    font-size: 1.8em;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+  .hero-video {
+    height: 50vh; /* Kurangi tinggi di mobile untuk performa */
+  }
+}
+
+/* HERO ELEGANT (Simpel, Minimalis Premium) */
+.elegant-hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); 
+  background-attachment: fixed; /* Parallax subtle */
+  background-size: cover;
+  position: relative;/* Gradient netral elegan, ganti dengan image jika perlu */
+  /* Atau gunakan image: background: url("https://wallpapers.com/images/hd/nike-background-0rbf3chq0wnsbtq3.jpg") no-repeat center/cover; */
+}
+
+.elegant-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(26, 26, 26, 0.3); /* Overlay lebih gelap untuk kontras */
+  z-index: 1;
+}
+
+.elegant-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.05); /* Overlay tipis untuk depth subtle */
+  z-index: 1;
+}
+.elegant-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 0 20px;
+  animation: contentFadeIn 1.5s ease forwards; /* Fade-in keseluruhan konten */
+}
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Judul Elegan: Bold, Spaced, dengan Subtle Glow */
+.elegant-title {
+  font-size: 80px; /* Besar tapi proporsional */
+  font-weight: 900; /* Bold premium */
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 6px; /* Spacing luas untuk elegance */
+  line-height: 1.1;
+  color: #1a1a1a; /* Hitam pekat */
+  position: relative;
+  display: inline-block;
+}
+.elegant-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #e60000; /* Aksen merah Nike */
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+.elegant-title:hover::after {
+  width: 100px; /* Extend on hover untuk interaksi subtle */
+}
+.elegant-title .stagger-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: staggerElegant 1.2s ease forwards;
+}
+@keyframes staggerElegant {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Delay untuk staggered: Tambahkan class .stagger-1, .stagger-2, dll. di HTML jika ingin per huruf */
+
+/* Subtitle Elegan: Clean dan Readable */
+.elegant-subtitle {
+  font-size: 20px;
+  font-weight: 300; /* Light untuk kontras */
+  color: #555; /* Abu-abu subtle */
+  margin: 0 0 40px 0; /* Spacing luas */
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: subtitleSlide 1s ease 0.5s forwards;
+  opacity: 0;
+  transform: translateY(15px);
+}
+@keyframes subtitleSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll Effect Subtle (Opsional: Shrink hero saat scroll) */
+.elegant-hero.scrolled {
+  height: 80vh;
+  transition: height 0.5s ease;
+}
+
+.btn {
+  background: #d10000;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+}
+.btn:hover {
+  background: #b30000;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.btn-hero {
+  font-size: 22px;
+  padding: 16px 35px;
+  border-radius: 10px;
+  margin-top: 300px;
+}
+
+/* SLIDER */
+.slider {
+  overflow: hidden;
+  max-width: 100%;
+  margin: 40px 0; /* Margin lebih besar */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.slides {
+  display: flex;
+  width: 300%;
+  animation: slide 12s infinite linear; /* Menambahkan 'linear' untuk gerakan konstan tanpa jeda */
+}
+
+.slides img {
+  width: 100%;
+  display: block; /* Menghilangkan spasi bawah gambar */
+  object-fit: cover;
+  height: 400px; /* Tinggi tetap untuk slider */
+}
+
+@keyframes slide {
+  0% { margin-left: 0; }
+  33.33% { margin-left: -100%; }
+  66.66% { margin-left: -200%; }
+  100% { margin-left: 0; } /* Kembali ke awal untuk loop terus menerus */
+}
+
+/* KATEGORI */
+.kategori {
+  text-align: center;
+  padding: 60px 20px; /* Padding lebih besar */
+  background: #fff;
+}
+.kategori-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Jarak antar item lebih besar */
+  flex-wrap: wrap; /* Agar responsif */
+}
+.kategori-item {
+  background: #e60000;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.kategori-item a {
+  text-decoration: none; /* Menghilangkan garis bawah pada link */
+  color: inherit; /* Mengikuti warna dari parent (.kategori-item) */
+  display: block; /* Membuat seluruh area div bisa diklik */
+  width: 100%;
+  height: 100%;
+  border-bottom: none;
+}
+
+.kategori-item:hover {
+  transform: translateY(-8px) scale(1.02); /* Efek lebih menonjol */
+  background: #e60000;
+  color: white;
+  box-shadow: 0 10px 25px rgba(230,0,0,0.3);
+}
+
+.kategori-item:hover a {
+  color: white; /* Memastikan link tetap putih saat hover */
+}
+
+
+/* PRODUK */
+.container {
+  padding: 60px 20px; /* Padding lebih besar */
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ukuran card lebih besar */
+  gap: 30px; /* Jarak antar card lebih besar */
+}
+.card {
+  background: white;
+  border-radius: 15px; /* Lebih bulat */
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex; /* Untuk layout internal card */
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bounce effect */
+  cursor: pointer; /* Indikasi clickable */
+}
+
+.card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 300px; /* Tinggi gambar lebih besar */
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.card:hover img {
+  transform: scale(1.1);
+}
+.card-content {
+  padding: 20px; /* Padding lebih besar */
+  text-align: center;
+  flex-grow: 1; /* Agar konten mengisi ruang */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-content h3 {
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #222;
+}
+.card-content p {
+  font-size: 0.95em;
+  color: #555;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+.price {
+  margin: 15px 0; /* Margin lebih besar */
+  font-weight: 700; /* Lebih tebal */
+  color: #e60000;
+  font-size: 1.3em;
+}
+.card-content button {
+  background: black;
+  color: white;
+  padding: 10px 20px; /* Padding lebih besar */
+  border: none;
+  border-radius: 8px; /* Lebih bulat */
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.card-content button:hover {
+  background: linear-gradient(90deg, #e60000, #ff3333);
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* TESTIMONI */
+.testimoni {
+  background: linear-gradient(to right, #f9f9f9, #f0f0f0); /* Gradien background */
+  padding: 60px 20px;
+  text-align: center;
+}
+.testi-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.testi-item {
+  background: white;
+  padding: 30px; /* Padding lebih besar */
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  max-width: 300px; /* Lebar item lebih besar */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #e60000; /* Garis merah di kiri */
+}
+.testi-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.testi-item p {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 15px;
+}
+.testi-item span {
+  display: block;
+  margin-top: 10px;
+  font-weight: 700;
+  color: #e60000; /* Nama penutur warna merah */
+  font-size: 1.1em;
+}
+
+/* SUBSCRIBE */
+.subscribe {
+  background: #e60000;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.subscribe h2 {
+  font-size: 2.2em;
+  margin-bottom: 25px;
+}
+.subscribe form {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap; /* Responsif */
+}
+.subscribe input {
+  padding: 12px 20px; /* Padding lebih besar */
+  border: none;
+  border-radius: 30px; /* Lebih bulat */
+  width: 300px; /* Lebar input lebih besar */
+  font-size: 1em;
+  outline: none;
+}
+.subscribe button {
+  background: black;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.subscribe button:hover {
+  background: #222;
+  transform: translateY(-2px);
+}
+
+/* ABOUT */
+.about {
+  background: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+.about p {
+  max-width: 700px; /* Lebar teks lebih besar */
+  margin: auto;
+  color: #444;
+  line-height: 1.8; /* Jarak baris lebih lega */
+  font-size: 1.1em;
+}
+
+/* KONTAK SECTION */
+.contact {
+  padding: 50px 20px;
+  text-align: center;
+  background: #f5f5f5; /* Latar belakang abu-abu muda untuk kontras */
+}
+
+.contact .section-title {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #111; /* Hitam Nike */
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.social-media a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e60000; /* Warna merah Nike */
+  font-size: 1.2em;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-media a:hover {
+  color: #000000; /* Putih saat hover */
+  transform: scale(1.1); /* Efek zoom halus */
+}
+
+.social-media a i {
+  font-size: 1.5em;
+}
+
+/* Responsivitas untuk Kontak */
+@media (max-width: 768px) {
+  .social-media {
+    gap: 20px;
+  }
+  .social-media a {
+    font-size: 1em;
+  }
+  .social-media a i {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-media {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .social-media a {
+    justify-content: center;
+  }
+}
+
+/* FOOTER */
+footer {
+  background: black;
+  color: #aaa; /* Warna teks lebih terang */
+  text-align: center;
+  padding: 20px; /* Padding lebih besar */
+  font-size: 0.9em;
+}
+
+/* ANIMASI FADE-IN */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px); /* Efek lebih jauh */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Durasi lebih lama */
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+  .nav-links {
+    margin-top: 15px;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .search-box {
+    margin-top: 15px;
+    width: 100%;
+    justify-content: center;
+  }
+  .search-box input {
+    width: 80%;
+    max-width: 250px;
+  }
+  .hero-title {
+    font-size: 50px;
+    letter-spacing: 3px;
+  }
+  .hero-subtitle.typing {
+    font-size: 18px;
+  }
+  .btn-hero {
+    font-size: 18px;
+    padding: 12px 25px;
+  }
+  .slides img {
+    height: 300px;
+  }
+  .kategori-grid, .grid, .testi-grid {
+    grid-template-columns: 1fr; /* Satu kolom untuk mobile */
+    gap: 20px;
+  }
+  .kategori-item, .testi-item, .card {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .subscribe form {
+    flex-direction: column;
+    align-items: center;
+  }
+  .subscribe input {
+    width: 90%;
+  }
+  .section-title {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 24px;
+  }
+  .nav-links {
+    gap: 10px;
+  }
+  .hero-title {
+    font-size: 40px;
+  }
+  .hero-subtitle.typing {
+    font-size: 16px;
+  }
+  .slides img {
+    height: 200px;
+  }
+  .kategori-item {
+    font-size: 16px;
+    padding: 20px 25px;
+  }
+  .card-content h3 {
+    font-size: 1.3em;
+  }
+  .price {
+    font-size: 1.1em;
+  }
+}
+
+/* Logo Nike sebagai Gambar */
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* Agar bisa diklik jika ingin link ke home */
+  transition: transform 0.3s ease; /* Efek hover halus */
+}
+.logo:hover {
+  transform: scale(1.05); /* Sedikit zoom saat hover */
+}
+.logo-img {
+  height: 40px; /* Tinggi logo (sesuaikan jika perlu lebih besar/kecil) */
+  width: auto; /* Lebar otomatis agar proporsi tetap */
+  object-fit: contain; /* Pastikan logo tidak terdistorsi */
+  background: none; /* Hilangkan background jika ada */
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 768px) {
+  .logo-img {
+    height: 35px; /* Lebih kecil di mobile */
+  }
+}
+
+/* Tambahan Elemen untuk Hero Elegan (Subtle & Menarik) */
+
+/* Decorative Lines (Garis Vertikal untuk Frame Elegan) */
+.decorative-line {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #e60000, transparent); /* Fade merah */
+  z-index: 1;
+  animation: lineFade 2s ease forwards;
+  opacity: 0;
+  transform: scaleY(0);
+}
+.left-line {
+  left: 5%;
+  animation-delay: 0.5s;
+}
+.right-line {
+  right: 5%;
+  animation-delay: 0.8s;
+}
+@keyframes lineFade {
+  to {
+    opacity: 0.6;
+    transform: scaleY(1);
+  }
+}
+
+/* Ikon Nike Kecil */
+.elegant-icon {
+  margin-bottom: 20px;
+  animation: iconFloat 3s ease-in-out infinite 1s; /* Float subtle setelah load */
+  opacity: 0;
+  transform: translateY(10px);
+}
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.icon-img {
+  height: 35px;
+  width: auto;
+  filter: grayscale(100%) brightness(0); /* Hitam untuk elegance */
+  transition: filter 0.3s ease;
+}
+.elegant-icon:hover .icon-img {
+  filter: grayscale(0%) brightness(1) sepia(100%) hue-rotate(-20deg) saturate(300%); /* Warna merah on hover */
+}
+
+/* Teaser Product (Gambar Kecil dengan Hover Effect) */
+.teaser-product {
+  position: relative;
+  margin-left: 20px; /* Samping tombol */
+  display: inline-block;
+  animation: teaserSlide 1.5s ease 1.2s forwards;
+  opacity: 0;
+  transform: translateX(20px);
+}
+@keyframes teaserSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.teaser-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(230, 0, 0, 0.2); /* Border subtle merah */
+}
+.teaser-img:hover {
+  transform: scale(1.1) rotate(5deg); /* Scale + rotate halus */
+  box-shadow: 0 8px 25px rgba(230, 0, 0, 0.3);
+  border-color: #e60000;
+}
+.teaser-label {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #e60000;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.teaser-product:hover .teaser-label {
+  opacity: 1; /* Muncul on hover */
+}
+
+/* Subtle Quote */
+.elegant-quote {
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(85, 85, 85, 0.7); /* Abu-abu transparan */
+  margin-top: 20px;
+  padding: 0 20px;
+  animation: quoteFade 2s ease 1.5s forwards;
+  opacity: 0;
+  transform: translateY(10px);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@keyframes quoteFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsivitas untuk Elemen Tambahan */
+@media (max-width: 768px) {
+  .decorative-line {
+    display: none; /* Hilangkan garis di mobile untuk clean */
+  }
+  .elegant-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .teaser-product {
+    margin-left: 0;
+    margin-top: 15px;
+    order: 3; /* Pindah ke bawah tombol */
+  }
+  .teaser-img {
+    width: 60px;
+    height: 60px;
+  }
+  .elegant-quote {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+  .elegant-icon {
+    margin-bottom: 15px;
+  }
+  .icon-img {
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .teaser-img {
+    width: 50px;
+    height: 50px;
+  }
+  .elegant-quote {
+    display: none; /* Hilangkan quote di very small screen */
+  }
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Sembunyikan default */
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Overlay gelap */
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: white;
+  margin: 5% auto;
+  padding: 0;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.3s ease;
+}
+.close:hover {
+  color: #e60000;
+}
+
+.modal-body {
+  display: flex;
+  padding: 20px;
+  gap: 30px;
+}
+
+.image-carousel {
+  flex: 1;
+  position: relative;
+  max-width: 400px;
+}
+
+.carousel-images {
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-images img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(230, 0, 0, 0.8);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+.prev:hover, .next:hover {
+  background: #e60000;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.dot.active {
+  background: #e60000;
+}
+
+.product-details {
+  flex: 1;
+  padding-left: 20px;
+}
+.product-details h2 {
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+.product-details .price {
+  font-size: 1.8em;
+  color: #e60000;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.product-details p {
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+}
+.specs {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+.specs li {
+  padding: 5px 0;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+.buy-btn {
+  background: #e60000;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  width: 100%;
+}
+.buy-btn:hover {
+  background: #b30000;
+  transform: translateY(-2px);
+}
+
+/* Responsivitas Modal */
+@media (max-width: 768px) {
+  .modal-body {
+    flex-direction: column;
+    padding: 15px;
+  }
+  .image-carousel {
+    max-width: 100%;
+  }
+  .carousel-images img {
+    height: 250px;
+  }
+  .product-details {
+    padding-left: 0;
+  }
+}
+
+/* Smooth Scroll untuk Navigasi */
+html {
+  scroll-behavior: smooth;
+}
+
+body.loading {
+  opacity: 0.5;
+  pointer-events: none; /* Disable click saat loading */
+}
+
+.navigation-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: none;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary-blue, #0070f3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Section IDs untuk Sub-Menu Scroll (Tambahkan style jika perlu) */
+#shoes, #apparel, #accessories, #tops, #bottoms, #sports, #outerwear {
+  scroll-margin-top: 80px; /* Offset untuk fixed navbar saat scroll */
+}

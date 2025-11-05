@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog Nike</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="men-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="http://pluspng.com/img-png/nike-logo-png-png-file-name-nike-logo-2133.png" alt="Nike Logo" class="logo-img">
+  </div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="index.html">Sepatu</a></li>
+    <li><a href="../women/index.html">Pakaian</a></li>
+    <li><a href="../kids/index.html">Aksesoris</a></li>
+  </ul>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Cari produk...">
+    <button id="searchButton"><i class="fas fa-search"></i></button>
+  </div>
+</nav>
+
+
+<!-- HERO (Video Lokal Nike yang Bisa Diputar) -->
+<section class="hero video-hero fade-in">
+  <!-- Video Lokal dengan Kontrol -->
+  <video controls autoplay muted loop class="hero-video" poster="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1920,c_limit/hero-poster.jpg">
+    <source src="Nike.mp4" type="video/mp4">
+    <!-- Fallback: Gambar jika video tidak didukung -->
+    <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1920,c_limit/hero-fallback.jpg" alt="Nike Hero Fallback" class="video-fallback">
+    Browser Anda tidak mendukung video.
+  </video>
+  <!-- Overlay untuk Branding -->
+  <div class="hero-overlay video-overlay"></div> 
+  <div class="hero-content video-content">
+    <a href="#produk" class="btn btn-hero">Lihat Koleksi</a>
+  </div>
+</section>
+
+  <!-- SLIDER PROMO -->
+  <section id="promo" class="slider fade-in">
+    <div class="slides">
+      <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto/b1bcbca4-e853-4df7-b329-5be3c61ee057/NIKE+DUNK+LOW+RETRO.png" alt="Promo 1">
+      <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto/cc9c6e82-dbf8-47a4-a205-34ed561f21d6/AS+W+NSW+LOGO+OS+TRACK+JKT.png" alt="Promo 2">
+      <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto/2f8bb2af-473a-4506-abf7-02c460796867/NK+HERITAGE+EUGENE+WNTRZD+BKPK.png" alt="Promo 3">
+      <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7ffed27f-7cdd-42f5-aa53-976b7efe1491/M+J+FLT+UTILITY+PANT.png" alt="Promo 4">
+      <img src="https://static.nike.com/a/images/w_1280,q_auto,f_auto/2b2ba3c5-44aa-4071-a85c-72fb84a29d36/air-jordan-1-low-travis-scott-x-fragment-release-date.jpg" alt="Promo 5">
+      <img src="https://static.nike.com/a/images/w_1280,c_limit,q_auto,f_auto/c19c67ef-321c-4556-99c8-c997fd9b40db/nike-x-st%C3%BCssy-apparel-accessories-collection-release-date.jpg" alt="Promo 6">
+      <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto/1ca4d5f9-4053-4dc0-801d-0368b1e7a5c6/LAL+MNK+DF+SWGMN+JSY+ASC+22.png" alt="Promo 7">
+      <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/8c25b606-7cb5-4830-ae08-3bfd9a15b042/U+J+RISE+CAP+S+CB+TRKR+JM+PTCH.png" alt="Promo 8">
+      <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto/28d0312a-d215-44af-8cb6-b355e2fa51b8/W+LD-1000+SE.png" alt="Promo 9">
+      <img src="https://static.nike.com/a/images/w_1280,q_auto,f_auto/a3356eeb-7765-4489-bd3b-304eac093225/nike-x-st%C3%BCssy-apparel-accessories-collection-release-date.jpg" alt="Promo 10">
+      <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/c9ee9824-9a1b-4859-8d4c-4c24c5af942d/NIKE+OFFCOURT+EASYON+SLIDE.png" alt="Promo 11">
+      <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto/e52eda35-0bc6-4998-802c-5b02338e278d/AS+W+NSW+PHNX+FLC+OOS+CREW.png" alt="Promo 12">
+    </div>
+  </section>
+
+  <!-- PRODUK -->
+  <section id="produk" class="container fade-in">
+    <h2 class="section-title">Katalog Produk</h2>
+    <div class="grid" id="productGrid">
+      <!-- Produk akan ditampilkan di sini -->
+      <div class="card" data-product-id="1">
+        <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c000386a-dc24-4a07-bcb7-23e293cfbb4d/AIR+JORDAN+4+RETRO.png" alt="Air Jordan 4 Retro 'Rare Air'">
+        <div class="card-content">
+          <h3>Air Jordan 4 Retro 'Rare Air'</h3>
+          <div class="price">Rp 3.329.000</div>
+          <button onclick="openProductModal(1)">Lihat Detail</button> <!-- Ubah button untuk trigger modal -->
+        </div>
+      </div>
+
+      <div class="card" data-product-id="2">
+        <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/70e76208-4c63-4b69-a018-7000a505873b/AIR+JORDAN+5+RETRO+OG.png" alt="Air Jordan 5 Retro">
+        <div class="card-content">
+          <h3>Air Jordan 5 Retro</h3>
+          <div class="price">Rp 3.269.000</div>
+          <button onclick="openProductModal(2)">Lihat Detail</button>
+        </div>
+      </div>
+  
+      <div class="card" data-product-id="3">
+        <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b2549df0-1a59-4595-a776-ec1dd83dc1e3/JORDAN+MVP+92.png" alt="Air Jordan MVP 92">
+        <div class="card-content">
+          <h3>Air Jordan MVP 92</h3>
+          <div class="price">Rp 2.249.000</div>
+          <button onclick="openProductModal(3)">Lihat Detail</button> <!-- Ubah button untuk trigger modal -->
+        </div>
+      </div>
+
+      <div class="card" data-product-id="4">
+        <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/2585d03f-7906-458a-8293-65e72cc842d3/JORDAN+LUKA+.77+PF.png" alt="Luka .77 PF 'Gone Camping'">
+        <div class="card-content">
+          <h3>Luka .77 PF 'Gone Camping'</h3>
+          <div class="price">Rp 1.549.000</div>
+          <button onclick="openProductModal(4)">Lihat Detail</button>
+        </div>
+      </div>
+
+      <div class="card" data-product-id="5">
+        <img src="https://static.nike.com/a/images/w_1280,q_auto,f_auto/15b77901-eb6e-46a8-8c2e-76beb0b5b42a/air-jordan-1-low-travis-scott-x-fragment-release-date.jpg" alt="Nike x Travis Scott">
+        <div class="card-content">
+          <h3>Air Jordan 1 Low Travis Scott x Fragment</h3>
+          <div class="price">Rp 32.249.000</div>
+          <button onclick="openProductModal(5)">Lihat Detail</button>
+        </div>
+      </div>
+
+      <div class="card" data-product-id="6">
+        <img src="https://static.nike.com/a/images/w_1280,q_auto,f_auto/a6e5200a-32a6-49b0-afea-74970bcc3ee6/air-jordan-1-low-x-travis-scott-reverse-olive-dm7866-200-release-date.jpg" alt="Nike x Travis Scott">
+        <div class="card-content">
+          <h3>Air Jordan 1 Low x Travis Scott Reverse Olive</h3>
+          <div class="price">Rp 32.249.000</div>
+          <button onclick="openProductModal(6)">Lihat Detail</button>
+        </div>
+      </div>
+
+      <div class="card" data-product-id="6">
+        <img src="https://static.nike.com/a/images/w_1280,q_auto,f_auto/da9599f1-6473-4891-8f96-31a0754df130/air-force-1-mid-x-off-white-%E2%84%A2%EF%B8%8F-white-do6290-100-release-date.jpg" alt="Nike x Off White">
+        <div class="card-content">
+          <h3>Air Force 1 Mid x Off-White ™️White</h3>
+          <div class="price">Rp 3.799.000</div>
+          <button onclick="openProductModal(7)">Lihat Detail</button>
+        </div>
+      </div>
+
+      <div class="card" data-product-id="6">
+        <img src="https://static.nike.com/a/images/w_1280,q_auto,f_auto/e4016c7a-b836-45ab-8669-99651f1252db/ldwaffle-x-sacai-x-fragment-light-smoke-grey-release-date.jpg" alt="Nike Sacai">
+        <div class="card-content">
+          <h3>LDWaffle x sacai x Fragment Light Smoke Grey</h3>
+          <div class="price">Rp 8.349.000</div>
+          <button onclick="openProductModal(8)">Lihat Detail</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+    <!-- KATEGORI -->
+  <section class="kategori fade-in">
+    <h2 class="section-title">Kategori Produk</h2>
+    <div class="kategori-grid">
+      <a class="kategori-item" href="men/index.html">Sepatu</a>
+      <a class="kategori-item" href="women/index.html">Pakaian</a>
+      <a class="kategori-item" href="kids/index.html">Aksesoris</a>
+    </div>
+  </section>
+
+  <!-- TESTIMONI -->
+  <section id="testimoni" class="testimoni fade-in">
+    <h2 class="section-title">Apa Kata Mereka</h2>
+    <div class="testi-grid">
+      <div class="testi-item">
+        <p>"Sepatunya nyaman banget buat jogging, recommended!"</p>
+        <span>- Andi, Jakarta</span>
+      </div>
+      <div class="testi-item">
+        <p>"Kualitas premium, worth the price. Pengiriman juga cepat."</p>
+        <span>- Sinta, Bandung</span>
+      </div>
+      <div class="testi-item">
+        <p>"Produk sesuai gambar dan deskripsi. Sangat puas!"</p>
+        <span>- Rudi, Surabaya</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE -->
+  <section class="subscribe fade-in">
+    <h2>Dapatkan Promo Update Nike</h2>
+    <form>
+      <input type="email" placeholder="Masukkan email Anda">
+      <button type="submit">Berlangganan</button>
+    </form>
+  </section>
+
+  <!-- TENTANG -->
+  <section id="tentang" class="about fade-in">
+    <h2 class="section-title">Tentang Nike</h2>
+    <p>
+      Nike adalah brand global yang menghadirkan inovasi, desain stylish, dan teknologi mutakhir
+      untuk menunjang performa atlet dan gaya hidup sehari-hari. Dengan slogan <em>Just Do It</em>, 
+      Nike menginspirasi generasi untuk terus bergerak maju. Kami berkomitmen untuk memberikan produk terbaik
+      yang mendukung setiap langkah Anda menuju keunggulan.
+    </p>
+  </section>
+
+  <!-- KONTAK -->
+<section id="kontak" class="contact fade-in">
+  <h2 class="section-title">Kontak Kami</h2>
+  <div class="social-media">
+    <a href="https://www.instagram.com/nike/" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.facebook.com/nike/" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+    <a href="https://twitter.com/Nike" target="_blank" aria-label="Twitter">
+      <i class="fab fa-twitter"></i> Twitter
+    </a>
+  </div>
+</section>
+
+  <footer>
+    <p>&copy; Katalog Nike | Made by ryzyyy </p>
+  </footer>
+  <div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="modal-body">
+      <!-- Carousel Images -->
+      <div class="image-carousel">
+        <div class="carousel-images" id="carouselImages">
+          <!-- Images akan diisi via JS -->
+        </div>
+        <button class="prev">&lt;</button>
+        <button class="next">&gt;</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+      
+      <!-- Deskripsi Produk -->
+      <div class="product-details">
+        <h2 id="productTitle"></h2>
+        <div class="price" id="productPrice"></div>
+        <p id="productDescription"></p>
+        <ul class="specs">
+          <!-- Specs akan diisi via JS -->
+        </ul>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+
+  
+</body>
+</html>
