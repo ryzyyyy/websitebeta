@@ -450,7 +450,120 @@ document.addEventListener('DOMContentLoaded', function() {
   const spinner = document.querySelector('.navigation-spinner');
   if (spinner) spinner.style.display = 'none';
   
+     // Fungsi untuk Slider Drag
+   const sliderContainer = document.querySelector('.slider-container');
+   const slides = document.querySelector('.slides');
+   let isDragging = false;
+   let startPos = 0;
+   let currentTranslate = 0;
+   let prevTranslate = 0;
+   let animationID;
+   let currentIndex = 0; // Indeks slide saat ini
+
+   // Fungsi untuk mendapatkan posisi
+   function getPositionX(event) {
+     return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+   }
+
+   // Mulai drag
+   function dragStart(event) {
+     isDragging = true;
+     startPos = getPositionX(event);
+     animationID = requestAnimationFrame(animation);
+     sliderContainer.classList.add('grabbing');
+   }
+
+   // Saat drag berlangsung
+   function drag(event) {
+     if (isDragging) {
+       const currentPosition = getPositionX(event);
+       currentTranslate = prevTranslate + currentPosition - startPos;
+     }
+   }
+
+   // Akhiri drag
+   function dragEnd() {
+     isDragging = false;
+     cancelAnimationFrame(animationID);
+     sliderContainer.classList.remove('grabbing');
+
+     // Hitung indeks baru berdasarkan pergeseran
+     const movedBy = currentTranslate - prevTranslate;
+     if (movedBy < -100 && currentIndex < slides.children.length - 1) currentIndex += 1; // Geser ke kanan (next)
+     if (movedBy > 100 && currentIndex > 0) currentIndex -= 1; // Geser ke kiri (prev)
+
+     setPositionByIndex();
+   }
+
+   // Animasi untuk smooth transition
+   function animation() {
+     setSliderPosition();
+     if (isDragging) requestAnimationFrame(animation);
+   }
+
+   // Set posisi slider
+   function setSliderPosition() {
+     slides.style.transform = `translateX(${currentTranslate}px)`;
+   }
+
+   // Set posisi berdasarkan indeks
+   function setPositionByIndex() {
+     currentTranslate = currentIndex * -250; // Asumsi lebar gambar 250px + margin
+     prevTranslate = currentTranslate;
+     setSliderPosition();
+   }
+
+   // Event listeners
+   sliderContainer.addEventListener('mousedown', dragStart);
+   sliderContainer.addEventListener('touchstart', dragStart);
+   sliderContainer.addEventListener('mousemove', drag);
+   sliderContainer.addEventListener('touchmove', drag);
+   sliderContainer.addEventListener('mouseup', dragEnd);
+   sliderContainer.addEventListener('touchend', dragEnd);
+   sliderContainer.addEventListener('mouseleave', dragEnd); // Jika mouse keluar saat drag
+
+   // Integrasi dengan tombol prev/next (update currentIndex)
+   document.querySelector('.prev').addEventListener('click', () => {
+     if (currentIndex > 0) {
+       currentIndex -= 1;
+       setPositionByIndex();
+     }
+   });
+   document.querySelector('.next').addEventListener('click', () => {
+     if (currentIndex < slides.children.length - 1) {
+       currentIndex += 1;
+       setPositionByIndex();
+     }
+   });
+   
   // Existing code (loadProductsByCategory, hamburger, modal, touch events, dll.) - sudah ada di script sebelumnya
+});
+
+// Kode slider yang sudah ada (contoh: navigasi, auto-slide, dll.)
+// ... (salin kode slider asli Anda di sini)
+
+// Tambahan: Event listener untuk tombol promo di slider
+document.addEventListener("DOMContentLoaded", function() {
+  const promoButtons = document.querySelectorAll('.promo-btn');
+  promoButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const slideItem = this.closest('.slide-item');
+      const originalPrice = slideItem.getAttribute('data-original-price');
+      const discountPrice = slideItem.getAttribute('data-discount-price');
+      const description = slideItem.getAttribute('data-description');
+      const title = slideItem.querySelector('h3').textContent;
+      
+      // Simulasi aksi beli: Tambah ke keranjang dan redirect ke checkout
+      alert(`Produk "${title}" ditambahkan ke favorit!`);
+      
+      // Redirect ke halaman checkout (ganti dengan URL asli jika ada)
+      window.location.href = '#';  // Placeholder: Buat halaman checkout jika belum ada
+      
+      // Alternatif: Jika ada sistem keranjang, panggil fungsi seperti addToCart(productId)
+      // const productId = slideItem.getAttribute('data-product-id');
+      // if (productId) addToCart(productId);
+    });
+  });
 });
 
 // Optional: Hide spinner on pageshow (untuk back/forward browser)
@@ -505,3 +618,4 @@ function handleNavigation(e, link) {
 const subFilter = sessionStorage.getItem('subFilter') || '';
 loadProductsByCategory(currentCategory, '', subFilter);
 sessionStorage.removeItem('subFilter'); // Clear after load
+
