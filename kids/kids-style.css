@@ -406,32 +406,101 @@ body {
 
 /* SLIDER */
 .slider {
-  overflow: hidden;
-  max-width: 100%;
-  margin: 40px 0; /* Margin lebih besar */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  background: #fff;
 }
 
+.slider-title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Tambahkan di bagian .slider */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  cursor: grab; /* Indikasi bisa di-drag */
+}
+.slider-container:active {
+  cursor: grabbing; /* Saat sedang di-drag */
+}
 .slides {
   display: flex;
-  width: 300%;
-  animation: slide 12s infinite linear; /* Menambahkan 'linear' untuk gerakan konstan tanpa jeda */
+  transition: transform 0.5s ease;
+  user-select: none; /* Mencegah seleksi teks saat drag */
 }
 
 .slides img {
-  width: 100%;
-  display: block; /* Menghilangkan spasi bawah gambar */
-  object-fit: cover;
-  height: 400px; /* Tinggi tetap untuk slider */
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  margin: 0 10px;
+  border-radius: 10px;
+  background: #f5f5f5;
+  padding: 10px;
+  pointer-events: none;
 }
 
-@keyframes slide {
-  0% { margin-left: 0; }
-  33.33% { margin-left: -100%; }
-  66.66% { margin-left: -200%; }
-  100% { margin-left: 0; } /* Kembali ke awal untuk loop terus menerus */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
 }
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .slides img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+.promo-btn {
+  background: linear-gradient(45deg, #000000, #000000); /* Gradien merah-oranye untuk tampilan menarik */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 25px; /* Sudut melengkung untuk gaya modern */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan untuk efek 3D */
+  text-transform: uppercase; /* Huruf kapital untuk penekanan */
+}
+
+.promo-btn:hover {
+  background: linear-gradient(45deg, #ff0000, #ff0000); /* Balik gradien saat hover */
+  transform: translateY(-2px); /* Efek angkat saat hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Bayangan lebih dalam */
+}
+
+.promo-btn:active {
+  transform: translateY(0); /* Kembali ke posisi normal saat klik */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 
 /* KATEGORI */
 .kategori {
